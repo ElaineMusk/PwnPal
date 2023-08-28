@@ -46,25 +46,10 @@ def FindQuery(FilteredLinks):
     return list(dict.fromkeys(FilteredLinks2))
 
 
-# def MakeParts(FilteredLinks2):
-#     for Link in FilteredLinks2:
-#         Link = Link.split('&')
-#         RefinedParts = []
-#         for part in Link:
-#             POC = "$$$$$$$$$$$$$PPPPOOOOCCCC$$$$$$$$$$$"
-#             refinedpart = part[:part.find("=") + 1] + POC
-#             RefinedParts.append(refinedpart)
-#         return RefinedParts, Link
-#
-#
-# def MaliciousLinks(RefinedParts: list, Parts: list):
-#     OriginalParts = Parts.copy()
-#     for index, x in enumerate(RefinedParts):
-#         Parts[index] = x
-#         MalLink = "&".join(Parts)
-#         print(MalLink)
-#         Parts = OriginalParts.copy()
-
+# List --> Tuple
+# This function takes all Links inside FilteredLinks2 as strings and processes them into elements holding two lists
+# Parts and RefinedParts, both of which are lists of substrings derived from the initial string. All elements are saved
+# to the tuple RefinedLinks
 def MakeParts(FilteredLinks2):
     RefinedLinks = []  # Create an empty list to store the processed links
     for Link in FilteredLinks2:
@@ -77,6 +62,9 @@ def MakeParts(FilteredLinks2):
     return RefinedLinks
 
 
+# Tuple --> String(s)
+# This function processes the lists inside each element of the tuple to form newly crafted URL requests as strings
+# printed to the user with the proof of concept injectable code inside each parameter of the new links
 def MaliciousLinks(RefinedLinks):
     for RefinedParts, Parts in RefinedLinks:
         OriginalParts = Parts.copy()
@@ -86,47 +74,7 @@ def MaliciousLinks(RefinedLinks):
             print(MalLink)
             Parts = OriginalParts.copy()
 
-        # for i in RefinedParts:
-        #     FuckyParts = Parts
-        #     x = RefinedParts.index(i)
-        #     FuckyParts[x] = RefinedParts[x]
-        #     MalLink = "&".join(FuckyParts)
-        #     print(MalLink)
-        # while total >= 0:
-        #     FuckyParts = Parts
-        #     MalLink = "&".join(FuckyParts)
-        #     print(MalLink)
-        #     total = total - 1  # Decrement the accumulator
-        #     if total < 0:
-        #         break
 
-
-# if __name__ == "__main__":
-#     main()
-
-
-# for y in RefinedParts:
-# MalLink = "&".join(Parts.replace(Parts[RefinedParts.index(y)], y))
-# print(MalLink)
-
-
-# GUN = []
-# POC = "balls"
-# Endings = []
-# index = str.find('=')
-# index2 = str.find('&')
-# if index2 != -1:
-#     MaliciousLink = str[:index + 1] + POC + str[index2:]
-#     GUN.append(MaliciousLink)
-#     Endings.append(str[index2:])
-#     LoadTheChamber(str[index2:])
-#
-# elif index2 == -1:
-#     MaliciousLink = "".join(Endings) + str[:index + 1] + POC
-#     GUN.append(MaliciousLink)
-# print(GUN)
-
-#
 while True:
     try:
         URL = input("Please insert a URL in the exact form of \"https://www.example.xyz\" for accurate results ")
