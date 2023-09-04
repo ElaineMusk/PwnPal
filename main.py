@@ -41,8 +41,9 @@ def FindQuery(FilteredLinks):
         for char in str:
             if char == "=":
                 FilteredLinks2.append(str)
-                for i in FilteredLinks2:
-                    print(i)
+    for str in (list(dict.fromkeys(FilteredLinks2))):
+        print(str)
+    print("^^^^^^^^^^^^^^^ORIGINAL-LINKS^^^^^^^^^^^^^^^^^^^^^^^")
     return list(dict.fromkeys(FilteredLinks2))
 
 
@@ -51,7 +52,7 @@ def FindQuery(FilteredLinks):
 # Parts and RefinedParts, both of which are lists of substrings derived from the initial string. All elements are saved
 # to the tuple RefinedLinks
 def MakeParts(FilteredLinks2):
-    RefinedLinks = []  # Create an empty list to store the processed links
+    RefinedLinks = []  # Create an empty tuple to store the Parts and RefinedParts lists of each link in FilteredLinks2
     for Link in FilteredLinks2:
         Parts = Link.split('&')
         RefinedParts = []
